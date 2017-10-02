@@ -52,8 +52,41 @@ int main()
 		}
 
 	}*/
-	
-	
+
+	/*
+	HANDLE hStdin = GetStdHandle(STD_INPUT_HANDLE);
+	if (hStdin == INVALID_HANDLE_VALUE)
+		cout << "GetStdHandle Error" << endl;
+
+	DWORD fdwMode = ENABLE_WINDOW_INPUT | ENABLE_MOUSE_INPUT;
+	if (!SetConsoleMode(hStdin, fdwMode))
+		cout << "SetConsoleMode Error" << endl;
+
+	INPUT_RECORD irInBuf[128];
+	DWORD cNumRead;
+
+	while (true)
+	{
+		// Wait for the events. 
+
+		if (!ReadConsoleInput(
+			hStdin,      // input buffer handle 
+			irInBuf,     // buffer to read into 
+			128,         // size of read buffer 
+			&cNumRead)) // number of records read 
+			cout << "ReadConsoleInput Error" << endl;
+
+		for (int i = 0; i < cNumRead; i++)
+		{
+			if (irInBuf[i].Event.KeyEvent.bKeyDown)
+				printf("key pressed\n");
+			else printf("key released\n");
+			//cout << .Event.KeyEvent.uChar << endl;
+		}
+
+
+	}*/
+
 	char c;
 	cin >> c;
 }

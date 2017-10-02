@@ -7,7 +7,7 @@ class Drawable {
 private:
 	int _width;
 	int _height;
-	
+
 	CHAR_INFO * _buffer;
 
 public:
