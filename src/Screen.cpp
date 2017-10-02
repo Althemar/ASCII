@@ -22,6 +22,12 @@ void Screen::display()
 	WriteConsoleOutput(_hOutput, _buffer, _dwBufferSize,_dwBufferCoord, &_rcRegion);
 }
 
+void Screen::clear()
+{
+	for (int i = 0; i < _width * _height; ++i)
+		_buffer[i].Char.AsciiChar = ' ';
+}
+
 void Screen::draw( short x, short y, char character, int color)
 {
 	_buffer[_height * x + y].Char.AsciiChar = character;
