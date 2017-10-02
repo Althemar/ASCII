@@ -7,45 +7,27 @@
 
 using namespace std;
 
-#define SCREEN_WIDTH 80
-#define SCREEN_HEIGHT 40
 
 int main()
 {
-
-	HANDLE hOutput = (HANDLE)GetStdHandle(STD_OUTPUT_HANDLE);
-
-	COORD dwBufferSize = { SCREEN_WIDTH,SCREEN_HEIGHT };
-	COORD dwBufferCoord = { 0, 0 };
-	SMALL_RECT rcRegion = { 0, 0, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1 };
-
-	CHAR_INFO buffer[SCREEN_HEIGHT][SCREEN_WIDTH];
-
-	ReadConsoleOutput(hOutput, (CHAR_INFO *)buffer, dwBufferSize,dwBufferCoord, &rcRegion);
-
-
-	for( int i = 0; i < SCREEN_WIDTH; ++i)
-		for (int j = 0; j < SCREEN_HEIGHT; ++j){
-			buffer[j][i].Char.AsciiChar = '0';
-			buffer[j][i].Attributes = 0x0E;
-		}
-
-	/*buffer[5][10].Char.AsciiChar = 'H';
-	buffer[5][10].Attributes = 0x0E;
-	buffer[5][11].Char.AsciiChar = 'i';
-	buffer[5][11].Attributes = 0x0B;
-	buffer[5][12].Char.AsciiChar = '!';
-	buffer[5][12].Attributes = 0x0A;*/
-
 	//getAscyncKeystroke
 
-	/*NYTimer t;
+	NYTimer t;
 	t.start();
 
 	NYTimer t2;
 	t.start();
 
-	int test = 0;
+	Screen screen(40, 40);
+
+	screen.draw( 5, 10, 'H', 0x0E );
+	screen.draw( 5, 11, 'i', 0x0B );
+	screen.draw( 5, 12, '!', 0x0A );
+
+	screen.display();
+
+
+	/*int test = 0;
 
 	int color1 = 0x0E;
 	int color2 = 0x0B;
@@ -57,11 +39,9 @@ int main()
 		{
 			for (int i = 0; i < SCREEN_WIDTH; ++i)
 				for (int j = 0; j < SCREEN_HEIGHT; ++j) {
-					buffer[j][i].Char.AsciiChar = '0';
-					buffer[j][i].Attributes = color;
+					screen.draw('0', color, 0, 0);
 				}
-
-			WriteConsoleOutput(hOutput, (CHAR_INFO *)buffer, dwBufferSize, dwBufferCoord, &rcRegion);
+			screen.display();
 			t.restart();
 		}
 
@@ -71,9 +51,9 @@ int main()
 			t2.restart();
 		}
 
-	}
+	}*/
 	
-	*/
+	
 	char c;
 	cin >> c;
 }
